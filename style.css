@@ -1,0 +1,12 @@
+body{
+    width: 100vw;
+    height: 100vh;
+}
+div, p{
+    display: block;
+    border: 1px solid black;
+    margin: 100px;
+    width: 50%;
+    min-height: 5vh;
+    background-color: rgba(255, 0, 85, 0.088);
+}
