@@ -1,12 +1,14 @@
-body{
+#url{
+    width: 90vw;
+    margin: auto;
+}
+
+#load_btn{
+    width: 20%;
+    margin: auto;
+}
+
+#__virtual_body__{
     width: 100vw;
     height: 100vh;
-}
-div, p{
-    display: block;
-    border: 1px solid black;
-    margin: 100px;
-    width: 50%;
-    min-height: 5vh;
-    background-color: rgba(255, 0, 85, 0.088);
 }

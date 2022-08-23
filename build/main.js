@@ -1,25 +1,7 @@
 "use strict";
 //constants
+var _a;
 // interfaces
-// interface list_item_info {
-//     is_list_item: boolean;
-//     position: number;
-//     tag: string;
-//     father: ParentNode;
-//     list: ChildNode[];
-//     self: HTMLAnchorElement;
-// }
-// interface child_Nodes{
-//     is_list:boolean;
-//     nodes: ChildNode[] 
-// }
-// interface unique_item {
-//     class_: boolean,
-//     id: boolean,
-//     tag: boolean,
-//     position: number,
-//     value: string
-// }
 // //functions
 var is_item_list = function (obj_alvo) {
     if (obj_alvo.children.length > 1) {
@@ -92,9 +74,8 @@ var extractor = function (obj_alvo) {
         var item_position = get_item_list_position(obj_alvo);
         return "|".concat(obj_alvo.tagName, "[").concat(item_position, "]");
     }
-    return "ué";
 };
-// iteractor
+// // iteractor
 document.addEventListener("click", function (event) {
     // console.log(event);
     var target = event.target;
@@ -107,4 +88,12 @@ document.addEventListener("click", function (event) {
             break;
     }
     console.log(path.split("|").reverse());
+});
+(_a = document.querySelector("#load_btn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
+    var _a;
+    var vb = document.querySelector("#__virtual_body__") || new Element();
+    var content = ((_a = document.querySelector("#url")) === null || _a === void 0 ? void 0 : _a.value) || "";
+    content = content.replace('href', 'data-href');
+    content = content.replace('type="submit"', 'type="button"');
+    vb.innerHTML = content;
 });

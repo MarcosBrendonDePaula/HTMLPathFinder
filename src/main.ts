@@ -3,27 +3,6 @@
 
 // interfaces
 
-// interface list_item_info {
-//     is_list_item: boolean;
-//     position: number;
-//     tag: string;
-//     father: ParentNode;
-//     list: ChildNode[];
-//     self: HTMLAnchorElement;
-// }
-
-// interface child_Nodes{
-//     is_list:boolean;
-//     nodes: ChildNode[] 
-// }
-
-// interface unique_item {
-//     class_: boolean,
-//     id: boolean,
-//     tag: boolean,
-//     position: number,
-//     value: string
-// }
 // //functions
 
 const is_item_list = (obj_alvo:HTMLAnchorElement):boolean =>{
@@ -107,11 +86,10 @@ const extractor = (obj_alvo:HTMLAnchorElement)=>{
         return `|${obj_alvo.tagName}[${item_position}]`
 
     }
-    return "ué"
 
 }
 
-// iteractor
+// // iteractor
 document.addEventListener("click", (event)=>{
     // console.log(event);
     let target = <HTMLAnchorElement>event.target
@@ -124,8 +102,13 @@ document.addEventListener("click", (event)=>{
         if(path.indexOf("#") !== -1)
             break;
     }
-
     console.log(path.split("|").reverse());
-    
-
 })
+
+document.querySelector("#load_btn")?.addEventListener("click",()=>{
+    let vb:Element = document.querySelector("#__virtual_body__") || new Element();
+    let content = (<HTMLTextAreaElement>document.querySelector("#url"))?.value || "";
+    content = content.replace('href','data-href');
+    content = content.replace('type="submit"','type="button"');
+    vb.innerHTML = content 
+});
