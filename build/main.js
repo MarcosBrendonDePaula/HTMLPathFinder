@@ -42,10 +42,15 @@ var get_unique_class_context = function (classes, context) {
 };
 var is_unique_tag_context = function (tag, context) {
     var _tags = context.children;
-    if (_tags.length == 1) {
-        return true;
+    var count = 0;
+    for (var i = 0; i < _tags.length; i++) {
+        if (_tags[i].tagName === tag) {
+            count++;
+        }
+        if (count > 1)
+            return false;
     }
-    return false;
+    return true;
 };
 var extractor = function (obj_alvo) {
     if (obj_alvo.tagName.toLowerCase() == "body") {

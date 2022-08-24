@@ -35,6 +35,7 @@ const getAllClasses = (obj_alvo:HTMLAnchorElement):Array<string> =>{
 const get_unique_class_context = (classes:Array<string> = [], context:HTMLAnchorElement):string|null =>{
     for(let c of classes){
         let class_ = context.querySelectorAll(`.${c}`)
+        
         if(class_.length == 1){
             return c;
         }
@@ -44,10 +45,17 @@ const get_unique_class_context = (classes:Array<string> = [], context:HTMLAnchor
 
 const is_unique_tag_context = (tag:string, context:HTMLAnchorElement):boolean =>{
     let _tags = context.children
-    if(_tags.length == 1){
-        return true;
+    let count:number = 0;
+    
+    for(let i=0; i<_tags.length; i++){
+        if(_tags[i].tagName === tag) {
+            count++;
+        }
+        if(count > 1)
+            return false;
     }
-    return false;
+
+    return true;
 }
 
 const extractor = (obj_alvo:HTMLAnchorElement)=>{
